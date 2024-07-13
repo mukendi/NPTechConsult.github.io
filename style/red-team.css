@@ -548,7 +548,7 @@ section.page-footer{
     .choose{
        position: relative;
        right: 7rem;
-       height: 57rem;
+       height: 59rem;
        width: 90%;
     }
 	/* footer Section */
@@ -561,7 +561,7 @@ section.page-footer{
    .choose{
     position: relative;
     right: 10rem;
-    height: 61rem;
+    height: 70.0rem;
     width: 100%;
    }
    .choose .box-choose{
@@ -569,11 +569,12 @@ section.page-footer{
     flex-direction: column;
    }
    .choose .box-choose .a{
-     height: 15rem;
+     height: 18rem;
    }
    .choose .box-choose .a p{
     font-size: 1.0rem;
    }
+
 }
 
 @media(max-width: 568px){

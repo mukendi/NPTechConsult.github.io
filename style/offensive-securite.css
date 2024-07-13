@@ -459,13 +459,35 @@ section.page-footer{
 }
 
 @media(max-width: 768px){
-   
+   	/* Home Section */
+	.banner .banner-contents h2{
+		font-size: 20px;
+	}
+	.banner .banner-contents h1{
+		font-size: 40px;
+	}
+	/* Sections Heading */
+	section .section-header h1{
+		font-size: 32px;
+	}
+		/* Home Section */
+	.banner .banner-contents h2{
+		font-size: 20px;
+	}
+	.banner .banner-contents h1{
+		font-size: 40px;
+	}
+	/* Sections Heading */
+	section .section-header h1{
+		font-size: 32px;
+	}
    .expertise .box-1 p{
     font-size: 0.80rem;
    }
    .expertise .box-container{
 	position: relative;
-	left: 1.3rem;
+	right: 0.0rem;
+	left: 0.4rem;
    }
    .expertise .box-container .box{
     position: relative;
@@ -477,33 +499,20 @@ section.page-footer{
    }
 }
 
-@media(max-width: 568px){
-	/* Home Section */
-	.banner .banner-contents h2{
-		font-size: 20px;
-	}
-	.banner .banner-contents h1{
-		font-size: 40px;
-	}
-	/* Sections Heading */
-	section .section-header h1{
-		font-size: 32px;
-	}
-	
-}
 @media (max-width :  390px) {
 	.expertise{
 		position: relative;
-		bottom: 1.4rem;
+		bottom: 2.3rem;
 	}
 	.expertise .box-container{
 		position: relative;
 		top: 1.1rem;
+		margin: 0.7rem;
 	}
 	.expertise .box-container .box{
 		position: relative;
 		top: 1.2rem;
-		right: 1.5rem;
 		height: 23rem;
 	}
+	
 }
