@@ -10,7 +10,7 @@ html{
 	
 	/* === Varialbles For Storing Colors === */
 	--background-clr: #edf0f6;
-	--dark-bg-clr: #171717;
+	--dark-bg-clr: #010000;
 	--primary-clr: #09778d;
 	--light-heading-clr: #f9f9f9;
 	--light-secondary-heading-clr: #ccc;
@@ -153,8 +153,10 @@ section.home{
 	}
 }
 .home .main-navbar .logo img{
-	width: 120px;
-	height: auto;
+	width: 50px;
+	height: 50px;
+    border: 1px solid transparent;
+    border-radius: 40px;
 }
 .home .main-navbar .nav-list{
 	list-style: none;

@@ -10,7 +10,7 @@ html{
 	
 	/* === Varialbles For Storing Colors === */
 	--background-clr: #edf0f6;
-	--dark-bg-clr: #171717;
+	--dark-bg-clr: #010000;
 	--primary-clr: #09778d;
 	--light-heading-clr: #f9f9f9;
 	--light-secondary-heading-clr: #ccc;
@@ -481,13 +481,30 @@ section.page-footer{
 	section .section-header h1{
 		font-size: 32px;
 	}
-   .expertise .box-1 p{
-    font-size: 0.80rem;
+	.expertise {
+		height: 170rem;
+	}
+	.expertise .heading{
+        position: relative;
+		top: 1.4rem;
+	}
+    
+	.expertise .box-1 {
+		position: relative;
+		top: 1.4rem;
+	}
+
+    .expertise .box-1 p{
+        font-size: 0.80rem;
    }
    .expertise .box-container{
+	   position: relative;
+	   right: 0.0rem;
+	   left: 0.4rem;
+   }
+   #box-container-id{
 	position: relative;
-	right: 0.0rem;
-	left: 0.4rem;
+	top: 5.5rem;
    }
    .expertise .box-container .box{
     position: relative;
@@ -511,7 +528,7 @@ section.page-footer{
 	}
 	.expertise .box-container .box{
 		position: relative;
-		top: 1.2rem;
+		top: 1.9rem;
 		height: 23rem;
 	}
 	

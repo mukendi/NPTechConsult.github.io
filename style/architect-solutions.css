@@ -10,13 +10,14 @@ html{
 	
 	/* === Varialbles For Storing Colors === */
 	--background-clr: #edf0f6;
-	--dark-bg-clr: #000000;
+	--dark-bg-clr: #010000;
 	--primary-clr: #09778d;
 	--light-heading-clr: #f9f9f9;
 	--light-secondary-heading-clr: #ccc;
 	--light-text-clr: #828282;
 	--dark-heading-clr: #242d38;
 	--dark-text-clr: #7b7b7b;
+    --bg: #efefef;
 }
 html::-webkit-scrollbar{
 	width: .8rem;
@@ -27,6 +28,9 @@ html::-webkit-scrollbar-track{
 html::-webkit-scrollbar-thumb{
 	background: #b3b7bc;
 	border-radius: 5rem;
+}
+body{
+    background: var(--bg);
 }
 /*   === Reusable Code Starts ===   */
 button.btn{
@@ -41,6 +45,22 @@ button.btn{
 	transition: all 0.3s;
 }
 button.btn:hover{
+	background-color: transparent;
+	color: var(--primary-clr);
+	border: 1px solid var(--primary-clr);
+}
+a.btn{
+    padding: 10px 25px;
+	background-color: var(--primary-clr);
+	color: var(--light-heading-clr);
+	font-size: 15px;
+	font-weight: 500;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+a.btn:hover{
 	background-color: transparent;
 	color: var(--primary-clr);
 	border: 1px solid var(--primary-clr);
@@ -84,7 +104,7 @@ section.home{
 	width: 100%;
 	min-height: 100vh;
 	padding: 0px 8%;
-	background: url('../images/home/IMG-20240710-WA0007.jpg');
+	background: url('../images/home/ARCHITECT.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -233,16 +253,7 @@ section.about{
 	object-fit: cover;
 	z-index: 2;
 }
-.about-contents .about-left-col::before{
-	position: absolute;
-	content: '';
-	width: calc(100% - 15px);
-	height: calc(100% - 15px);
-	outline: 3px solid var(--primary-clr);
-	top: -10px;
-	left: -10px;
-	z-index: 1;
-}
+
 .about-contents .about-right-col{
 	position: relative;
 }
@@ -288,217 +299,55 @@ section.about{
 	margin-right: 20px;
 }
 /*   === About Section Styling Ends ===   */
+/*   === Choose Section Styling Starts === */
 
-/*   === Services Section Styling Starts ===   */
-section.services{
-	width: 100%;
-	padding: 80px 8% 60px;
+.choose{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 30rem;
+    margin: 10rem;
+    background: var(--dark-bg-clr);
+    color: #b3b3b3;
 }
-.services .services-contents{
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 20px;
+.choose .choose-info{
+    padding: 2rem;
 }
-.services-contents .service-box{
-	display: flex;
-	padding: 20px;
-	background-color: var(--light-heading-clr);
-	border-radius: 5px;
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-	cursor: pointer;
-	transition: all 0.3s;
+.choose .choose-info p{
+    position: relative;
+    top: 2rem;
 }
-.services-contents .service-box:hover{
-	transform: translateY(-3px);
-}
-.service-box .service-icon-box{
-	min-width: 60px;
-	min-height: 60px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	align-self: flex-start;
-	border-radius: 50%;
-	background-color: #fae7e1;
-	outline: 1px solid #fae7e1;
-	outline-offset: 10px;
-	margin: 10px 10px 0px 10px;
-}
-.service-box .service-icon-box i{
-	font-size: 26px;
-	color: var(--primary-clr);
-}
-.service-box .service-desc{
-	margin-left: 15px;
-	flex-basis: 1;
-}
-.service-box .service-desc h2{
-	color: var(--dark-heading-clr);
-	font-size: 26px;
-	font-weight: 500;
-	margin-bottom: 8px;
-}
-.service-box .service-desc p{
-	font-style: 15px;
-	color: var(--dark-text-clr);
-	line-height: 1.4;
-}
-/*   === Services Section Styling Ends ===   */
 
-
-
-/*   === Team Section Styling Starts ===   */
-section.our-team{
-	width: 100%;
-	padding: 80px 8% 20px;
+.choose .box-choose{
+    display: flex;
+    flex-direction: row;
+    justify-items: self-start;
+    justify-content: space-between;
+    padding: 1.4rem;
+    font-size: 1.0rem;
 }
-.our-team .team-contents{
-	max-width: 1068px;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 20px;
-	margin: 0px auto;
+.box-choose .a{
+    padding: 1.0rem;
+    object-fit: cover;
 }
-.team-contents .trainer-card{
-	position: relative;
-	max-width: 350px;
-	padding: 10px;
-	background-color: var(--light-heading-clr);
-	border-radius: 5px;
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-	cursor: pointer;
-	overflow: hidden;
+.box-choose .a p{
+    color: #b3b3b3;
+    line-height: 1.5rem;
+    font-size: 1.30rem;
+    padding-top: 1.3rem;
 }
-.trainer-card .trainer-image{
-	width: 100%;
-	height: 300px;
+.box-choose .a i{
+    color: rgb(136, 3, 3);
+    height: 3rem;
+    width: 3rem;
+    line-height: 5rem;
+    font-size: 2rem; 
 }
-.trainer-card .trainer-image img{
-	width: 100%;
-	height: 100%;
-	display: block;
-	object-fit: cover;
-	border-radius: 5px 5px 0px 0px;
+.a{
+    display: flex;
+    flex-direction: row;
 }
-.trainer-card .trainer-desc{
-	padding: 10px 0px;
-}
-.trainer-card .trainer-desc h2{
-	font-size: 22px;
-	font-weight: 600;
-	color: var(--dark-heading-clr);
-}
-.trainer-card .trainer-desc p{
-	color: var(--dark-text-clr);
-	margin-top: 5px;
-}
-.trainer-card .trainer-contact{
-	position: absolute;
-	top: calc(50% - 50px);
-	/*right: 0;*/
-	right: -100%;
-	transform: translateY(-50%);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: var(--primary-clr);
-	padding: 15px 10px;
-	border-radius: 5px 0px 0px 5px;
-	transition: 0.3s;
-}
-.team-contents .trainer-card:hover .trainer-contact{
-	right: 0;
-}
-.trainer-card .trainer-contact a{
-	text-decoration: none;
-	color: var(--light-heading-clr);
-}
-.trainer-card .trainer-contact a:not(:last-child){
-	margin-bottom: 15px;
-}
-.trainer-card .trainer-contact a i{
-	font-size: 20px;
-	color: var(--light-heading-clr);
-	transition: 0.3s;
-}
-.trainer-card .trainer-contact a i:hover{
-	transform: scale(1.2);
-}
-/*   === Team Section Styling Ends ===   */
-
-/*   === blog Section Styling Starts ===   */
-section.blog{
-	width: 100%;
-	padding: 80px 8% 60px;
-}
-.blog .blog-contents{
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 20px;
-}
-.blog-contents .article-card{
-	background-color: var(--light-heading-clr);
-	padding: 15px;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: all 0.3s;
-}
-.blog-contents .article-card:hover{
-	box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-}
-.blog-contents .article-card img{
-	width: 100%;
-	height: 250px;
-	object-fit: cover;
-	border-radius: 5px 5px 0px 0px;
-}
-.blog-contents .article-card .category{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px 0px;
-}
-.article-card .category .subject{
-	padding: 6px 10px;
-	background-color: var(--background-clr);
-	border-radius: 5px;
-}
-.article-card .category .subject h3{
-	font-size: 18px;
-	font-weight: 500;
-	color: var(--primary-clr);
-}
-.article-card .category span{
-	color: var(--dark-text-clr);
-}
-.article-card .article-title{
-	font-size: 20px;
-	color: var(--dark-heading-clr);
-}
-.article-card .article-desc{
-	font-size: 15px;
-	line-height: 1.3;
-	color: var(--dark-text-clr);
-	margin: 10px 0px;
-}
-.article-card .article-views{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 15px;
-	padding: 15px 0px 5px;
-	border-top: 1px solid #ddd;
-}
-.article-card .article-views span{
-	color: var(--dark-text-clr);
-}
-.blog .view-more-btn-container{
-	margin-top: 30px;
-	text-align: center;
-}
-/*   === blog Section Styling Ends ===   */
-
+/*   === Choose Section Styling Ends   ===   /*
 /*   === Footer Section Styling Starts ===   */
 section.page-footer{
 	width: 100%;
@@ -613,23 +462,25 @@ section.page-footer{
 /*   === Media Query Starts ===   */
 @media(min-width: 1400px){
 	/* Navbar */
-	.home.active .main-navbar{
+	.home.active .main-navbar {
 		left: calc(calc(100% - 1400px) / 2);
 	}
+    .choose {
+        width: 71.0rem;
+    }
+}
+@media (max-width: 1400px){
+   
+}
+@media (max-width: 1024px){
+    .choose {
+        height: 55rem;
+    }
 }
 @media(max-width: 968px){
 	/* Home Section */
 	.main-navbar .nav-list li{
 		margin: 0px 10px;
-	}
-	/* Team Section */
-	.our-team .team-contents{
-		max-width: 650px;
-		grid-template-columns: repeat(2, 1fr);
-	}
-	/* blog Section */
-	.blog .blog-contents{
-		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
@@ -680,12 +531,7 @@ section.page-footer{
 		transform: translateX(-30px);
 		opacity: 0;
 	}
-	/* Facilities Section */
-	.facilities .facilities-contents{
-		grid-template-columns: repeat(2, 1fr);
-		grid-gap: 25px 20px;
-	}
-	/* About Section */
+    	/* About Section */
 	.about .about-contents{
 		grid-template-columns: 1fr;
 		grid-gap: 25px 0px;
@@ -699,40 +545,38 @@ section.page-footer{
 	.about-right-col .about-states .about-state{
 		flex-basis: 100%;
 	}
-	/* Services Section */
-	.services-contents .service-box{
-		flex-direction: column;
-	}
-	.service-box .service-icon-box{
-		align-self: center;
-	}
-	.service-box .service-desc{
-		text-align: center;
-		margin-left: 0px;
-		margin-top: 25px;
-	}
+
+    /* choose Section */
+    .choose{
+       position: relative;
+       right: 7rem;
+       height: 59rem;
+       width: 90%;
+    }
 	/* footer Section */
 	.page-footer .footer-contents{
 		grid-template-columns: 1fr;
 	}
 }
 
-@media(max-width: 668px){
-	/* Services Section */
-	.services .services-contents{
-		grid-template-columns: 1fr;
-	}
-	/* Team Section */
-	.our-team .team-contents{
-		max-width: 300px;
-		grid-template-columns: 1fr;
-		grid-gap: 20px 0px;
-	}
+@media(max-width: 768px){
+   .choose{
+    position: relative;
+    right: 10rem;
+    height: 73.0rem;
+    width: 100%;
+   }
+   .choose .box-choose{
+    display: flex;
+    flex-direction: column;
+   }
+   .choose .box-choose .a{
+     height: 18rem;
+   }
+   .choose .box-choose .a p{
+    font-size: 1.0rem;
+   }
 
-	/* blog Section */
-	.blog .blog-contents{
-		grid-template-columns: 1fr;
-	}
 }
 
 @media(max-width: 568px){
@@ -743,21 +587,16 @@ section.page-footer{
 	.banner .banner-contents h1{
 		font-size: 40px;
 	}
-	/* Facilities Section */
-	.facilities .facilities-contents{
-		grid-template-columns: 1fr;
-		grid-gap: 25px 0px;
+	/* Sections Heading */
+	section .section-header h1{
+		font-size: 32px;
 	}
-	/* About Section */
+    	/* About Section */
 	.about-contents .about-right-col .about-states{
 		flex-direction: column;
 	}
 	.about-states .about-state-1{
 		margin-right: 0px;
 		margin-bottom: 15px;
-	}
-	/* Sections Heading */
-	section .section-header h1{
-		font-size: 32px;
 	}
 }
