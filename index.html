@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
 	<title>NPTechConsultant</title>
 </head>
 <body>
@@ -29,7 +31,7 @@
 			<li><a href="#about">Mission</a></li>
 			<li><a href="#services">Services</a></li>
 			<li><a href="#contact">Contact</a></li>
-			<li><a href="#formations">A propos</a></li>
+			<li><a href="./pages/about.html">A propos</a></li>
 			
 		</ul>
 		<a href="#contact" class="join-us-btn-wrapper">
@@ -90,7 +92,7 @@
 		
 		<div class="service-box">
 			<div class="service-icon-box">
-				<!-- <i class="fa-solid fa-weight-hanging"></i> -->
+				<i class="fa fa-cogs" aria-hidden="true"></i>
 			</div>
 			<div class="service-desc">
 				<a href="./pages/integration-solution.html"><h2>Intégration de solutions de cybersécurité.</h2></a>
@@ -101,7 +103,7 @@
 
 		<div class="service-box">
 			<div class="service-icon-box">
-				<!-- <i class="fa-solid fa-weight-hanging"></i> -->
+				<i class="fa fa-users" aria-hidden="true"></i>
 			</div>
 			<div class="service-desc">
 				<a href="./pages/gouvernance-management.html"><h2>Gouvernance et Managemante de SI</h2></a>
@@ -111,7 +113,7 @@
 
 		<div class="service-box">
 			<div class="service-icon-box">
-				<!-- <i class="fa-solid fa-weight-hanging"></i> -->
+				<i class="fa fa-shield" aria-hidden="true"></i>
 			</div>
 			<div class="service-desc">
 				<a href="./pages/offensive-securite.html"><h2>Sécurité Offensive</h2></a>
@@ -343,7 +345,7 @@
 			
 				<form class="newsletter">
 					<input type="email" placeholder="Votre Email">
-					<button class="btn newsletter-btn" type="submit">Souscrire</button>
+					<button class="btn newsletter-btn" id="send-message">Souscrire</button>
 				</form>
 			</div>
 		</div>

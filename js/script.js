@@ -1,10 +1,11 @@
 // Script File
 
 // Home Section Starts
-var hamburgerBtn = document.querySelector('.main-navbar .hamburger-btn');
-var navList = document.querySelector('.main-navbar .nav-list');
-var navListItems = document.querySelectorAll('.nav-list li a');
-
+const hamburgerBtn = document.querySelector('.main-navbar .hamburger-btn');
+const navList = document.querySelector('.main-navbar .nav-list');
+const navListItems = document.querySelectorAll('.nav-list li a');
+const sendMessage = document.querySelector('#send-message');
+const form        = document.querySelector('.newsletter');
 hamburgerBtn.addEventListener('click', activeClass);
 
 function activeClass(){
@@ -36,3 +37,37 @@ function pageScrollFunction(){
 }
 
 // Home Section Ends
+
+// Send emails
+(function(){
+	emailjs.init({
+	  publicKey: "4WEZfQJBI5HK7rFsM",
+	  blockHeadless: true,
+	  blockList: {
+		// Block the suspended emails
+		list: ['foo@emailjs.com', 'bar@emailjs.com'],
+		// The variable contains the email address
+		watchVariable: 'userEmail',
+	  },
+	  limitRate: {
+		// Set the limit rate for the application
+		id: 'app',
+		// Allow 1 request per 10s
+		throttle: 10000,
+	  },
+	});
+	var templateParams = {
+		name: 'James',
+		notes: 'Check this out!',
+	  };
+    emailjs.send("service_lqsf4bu", "template_6wpj2sd", templateParams).then(
+		(response) => {
+			console.log('SUCCESS!', response.status, response.text);
+		  },
+		  (error) => {
+			console.log('FAILED...', error);
+		  },
+	);
+	
+ })();
+ 
