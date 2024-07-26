@@ -1,0 +1,672 @@
+
+<!-- saved from url=(0162)file:///D:/Data2/Telegram%20Desktop/MalDevAcademy/MALWARE%208b74ccffb7e64efea30e3da4d919418d/82%20Introduction%20To%20EDRs%20f4827eb5fb1d4d198d575a5ad670624c.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>82. Introduction To EDRs</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f4827eb5-fb1d-4d19-8d57-5a5ad670624c" class="page sans"><header><h1 class="page-title"><a href="https://maldevacademy.com/modules/82"><strong>82. Introduction To EDRs</strong></a></h1></header><div class="page-body"><h2 id="93591627-f7f8-495a-ae0d-a4260f7609af" class=""><strong>Introduction to EDRs</strong></h2><h3 id="98ae7c32-9f8b-4f32-84dd-12f4347ecc58" class=""><strong>Introduction</strong></h3><p id="929c4f47-f740-475f-a013-f92318132b9b" class="">Endpoint Detection and Response (EDR) is a security solution that detects and responds to threats like ransomware and malware. It works by continuously monitoring endpoints for suspicious activity by collecting data on events such as system logs, network traffic, interprocess communications (IPCs), RPC calls, authentication attempts, and user activity.</p><p id="e84dea0d-99b7-4d39-90e5-ddb08754e3ce" class="">EDRs will collect data when installed on endpoints and then analyze and correlate them to identify potential threats. When a threat is detected, EDR solutions can automatically respond by containing and isolating the affected endpoint from the network or by taking other predefined actions such as deleting malicious files or terminating suspicious processes.</p><p id="161d4417-ec26-4001-9828-1af340cc61de" class="">Additionally, EDRs will run programs in sandboxes when executed and then continue to monitor them while they are running in search of malicious behavior.</p><p id="11fa9904-1488-482e-ae23-3b7ffd72821d" class="">EDRs should be used as a part of a larger cyber security strategy and used alongside other solutions such as firewalls, intrusion detection systems (IDS), intrusion prevention systems (IPS), and security information and event management (SIEM) solutions. Blue teamers also use EDR logs to perform threat hunting and search for IoCs that could have potentially been missed by the solution.</p><h3 id="71987bd7-109e-4219-8c74-cc59b86d9016" class=""><strong>How EDRs Work</strong></h3><p id="f601d90b-e47d-4df3-9158-52b47df4648e" class="">An EDR agent typically consists of two parts: a user-mode application and a kernel-mode driver. These parts gather information using the variety of methods mentioned earlier. The collected data is then analyzed and matched against signatures and malicious behavior. Upon detecting malicious or suspicious behavior, the EDR will log the finding in the security dashboard. EDR settings are highly customizable and depending on its settings, it may either take an action on its own or simply provide an alert. Below is an image from one of Microsoft's&nbsp;<a href="https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/alerts-queue?view=o365-worldwide">articles</a>&nbsp;showing the security dashboard for Microsoft Defender For Endpoint with a few alerts.</p><p id="21007460-caad-4439-85d3-ccc1799672af" class="">
+</p><figure id="43b856c4-1e9f-42c3-a60d-d69d3a09c731" class="image"><a href="./82. Introduction To EDRs_files/edr-dashboard.png"><img style="width:1857px" src="./82. Introduction To EDRs_files/edr-dashboard.png"></a></figure><h3 id="488e6272-0d2a-470e-8ce6-650fb5989606" class=""><strong>Signature Detection</strong></h3><p id="2651f52b-f84e-42c4-9c4f-48a15807b0b1" class="">Recall that antiviruses are generally limited to basic signature detection and can be easily bypassed. Although an EDR is far more complex and contains more functionality, it does incorporate AV features to detect known malware. Furthermore, defenders can expand their EDR detection capabilities by creating custom rules.</p><h3 id="29bf77dd-380d-4863-80f5-6de754bc74fe" class=""><strong>Detection Based on Behavior</strong></h3><p id="0286b085-3e6e-4a01-928b-3fd749d91952" class="">Behavior and runtime detection are one of the main features of an EDR. It can monitor running processes using several methods which are mentioned below.</p><h3 id="744e732c-e4d6-4bf5-8bdc-6100e9a5b25e" class=""><strong>Userland Hooking</strong></h3><p id="ded42053-6bd8-4138-8600-064c23823f27" class="">EDRs utilize userland hooking to detect malicious arguments passed to functions as well as see payloads after their decryption. Userland hooking was previously explained in the&nbsp;<em>Syscalls - Userland Hooking</em>&nbsp;module. The image below further illustrates userland hooking in action.</p><figure id="88c8db50-b414-4eb1-8735-96f3a4979d15" class="image"><a href="./82. Introduction To EDRs_files/intro-edr-120017985-26bd0e42-0d73-4b1f-81da-b14b76e9efef.png"><img style="width:1306px" src="./82. Introduction To EDRs_files/intro-edr-120017985-26bd0e42-0d73-4b1f-81da-b14b76e9efef.png"></a></figure><h3 id="026b1822-31b4-4ceb-a2df-95fa8ee7d5a9" class=""><strong>Event Tracing for Windows (ETW)</strong></h3><p id="dc816f54-613b-4d64-86a4-7d883c0a8631" class="">ETW or&nbsp;<a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/event-tracing-for-windows--etw-">Event Tracing for Windows</a>&nbsp;is a kernel mode mechanism built into the Windows operating system that tracks and records events that are triggered by drivers and user-mode applications on the current system.</p><p id="4a108070-5059-4f1a-8ffd-3d0a748cc8ef" class="">The following image is from Microsoft's&nbsp;<a href="https://learn.microsoft.com/en-us/windows-hardware/test/weg/instrumenting-your-code-with-etw">Instrumenting Your Code with ETW</a>&nbsp;article, which shows the ETW architecture.</p><figure id="4576c6a2-e37a-4389-a5ee-e450fc2e5d6b" class="image"><a href="./82. Introduction To EDRs_files/intro-edr-219966477-a29ed0b1-e7af-4e89-8461-98d570ab8e1b.png"><img style="width:1283px" src="./82. Introduction To EDRs_files/intro-edr-219966477-a29ed0b1-e7af-4e89-8461-98d570ab8e1b.png"></a></figure><p id="8e2f6f58-301b-4c4f-88fe-61f80e9718d0" class="">ETW can log events like process creation and termination, device driver loading and unloading, file and registry access, and user input events. It can also capture network events by logging established connections and authentication requests.</p><p id="713c2795-2d00-450c-aec4-4f2edb555e9a" class="">EDRs can utilize this built-in mechanism to further enhance their ability in collecting information about a specific endpoint. On the other hand, several tools also utilize ETW such as&nbsp;<a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon">Sysmon</a>&nbsp;and&nbsp;<a href="https://learn.microsoft.com/en-us/sysinternals/downloads/procmon">Procmon</a>.</p><p id="44bed106-190e-4423-ad4e-80799607c4ae" class="">Bypassing ETW will be discussed in future modules.</p><h3 id="faa37f60-a7d6-4fbd-aa69-19fe27023e2e" class=""><strong>Antimalware Scan Interface (AMSI)</strong></h3><p id="c69e258a-c860-4953-b146-8d9d601f5ba6" class="">AMSI or&nbsp;<a href="https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal">Antimalware Scan Interface</a>&nbsp;is another security mechanism built into the Windows OS starting from Windows 10. It allows third-party software to integrate with it and scan and detect malicious applications.</p><p id="e08a29ec-18fd-44ae-b02a-706bae70d4b9" class="">The following image is from Microsoft's&nbsp;<a href="https://learn.microsoft.com/en-us/windows/win32/amsi/how-amsi-helps">How the Antimalware Scan Interface (AMSI) helps you defend against malware</a>&nbsp;article in which AMSI's architecture is visualized.</p><figure id="da9688b4-04d0-4976-a22d-ad70fac79aa0" class="image"><a href="./82. Introduction To EDRs_files/intro-edr-320010420-0de272ee-4b02-4394-b79f-6bd29770d8da.png"><img style="width:727px" src="./82. Introduction To EDRs_files/intro-edr-320010420-0de272ee-4b02-4394-b79f-6bd29770d8da.png"></a></figure><p id="e2f139ce-f987-4835-bfc9-3a9526e9bead" class="">Through the use of AMSI, security software is capable of examining scripts, code, and .NET assemblies being executed and injected dynamically, such as those written in JavaScript, VBScript, PowerShell, or other scripting languages. Additionally, AMSI can scan .NET assemblies, which are programs built with Microsoft's .NET framework and programmed in C# and VB.NET.</p><p id="3b7d9ed5-cdfa-4d1a-a025-27bf0edad527" class="">AMSI is utilized through a group of APIs that are categorized by Microsoft as follows:</p><ul id="7903fad6-458b-4bb3-a8b6-8176e0c44ee1" class="bulleted-list"><li style="list-style-type:disc"><a href="https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-enumerations">Antimalware Scan Interface Enumerations</a>&nbsp;- Enumerations used by AMSI programming elements.</li></ul><ul id="17d401df-1252-40a5-aa2a-b982489a3f0d" class="bulleted-list"><li style="list-style-type:disc"><a href="https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-functions">Antimalware Scan Interface Functions</a>&nbsp;- Functions that an application can call to request a scan. The image below shows the available AMSI scanning functions.<figure id="8ae6d2f5-38c6-4c7e-8035-ad8ef76804b3" class="image"><a href="./82. Introduction To EDRs_files/amsi-functions.png"><img style="width:879px" src="./82. Introduction To EDRs_files/amsi-functions.png"></a></figure><ul id="b5ad3a97-7681-4a59-aacc-b776e9ff6ec8" class="bulleted-list"><li style="list-style-type:circle"><a href="https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-interfaces">Antimalware Scan Interface Interfaces</a>&nbsp;- COM interfaces that make up the AMSI API.</li></ul><p id="bf4acfac-425a-4aab-9d33-4ba2841f523b" class="">The core implementation of the AMSI API is provided by&nbsp;<code>amsi.dll</code>&nbsp;which is the main DLL that AMSI uses to carry out its operations (reference the above-mentioned functions). The operating system's security subsystem and third-party security products that integrate with AMSI are two other sets of DLLs that are used by AMSI.</p><h3 id="8043a43b-54ae-4799-bbc0-1619be2846a2" class=""><strong>Memory-Based Detection</strong></h3><p id="7cc56d23-52d7-49a0-912e-a1252905c4a4" class="">Memory-based detections refer to the IoCs and signatures that are generated after executing your payload and are often created by it. These IoCs can be heap allocations, trampolines when hooking APIs, thread stacks, and RWX memory sections.</p><p id="672b4042-1ca1-4f13-8cdd-06a23f64553f" class="">Bypassing such measures take place post-execution as the payload is running where adjustments can be made to the payload's layout in memory. Memory-based detection is an advanced concept and is one of the most effective ways to detect malicious code execution.</p><p id="0f0a9cae-ae9b-4b70-aeea-31dcb08fbd66" class="">Bypassing memory-based detections will be covered in future modules.</p><h3 id="d9297795-9c22-4c6c-9e67-41555cb71bd1" class=""><strong>Kernel CallBacks and Minifilter Drivers</strong></h3><p id="3c40c492-176d-4c22-a7b2-7a5a1e0e02b4" class="">Kernel callbacks are a mechanism used in the Windows OS to allow kernel-mode code to register functions to be called by the OS at specific times or when an event occurs. Some example events are file creation, registry key modification, and a DLL being loaded.</p><p id="ce277646-d31f-40cc-bd48-dd3c13650109" class="">When the event takes place, the OS will call the registered callback function and notify the kernel-mode code that it occurred. This "kernel-mode code" can be a device driver that is created by security products, which in this case is an EDR.</p><p id="daadce16-e5ea-4460-8e7e-b275d5752ab3" class="">It is worth noting that poorly written or misconfigured callbacks can cause system instability, performance issues, or even security vulnerabilities therefore this isn't a method used by all EDR vendors.</p><p id="d676874c-7bdd-4d80-8f21-418c08ba4ce3" class="">Some example callbacks are listed below.</p><ul id="3e50ce89-140e-40db-ad48-389b718e7a09" class="bulleted-list"><li style="list-style-type:circle"><a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntddk/nf-ntddk-pssetcreateprocessnotifyroutine">PspCreateProcessNotifyRoutine</a>&nbsp;- Registers a driver-supplied callback to be called whenever a process is created or deleted.</li></ul><ul id="04cba77f-e3aa-4af0-a503-96fc0fefa7aa" class="bulleted-list"><li style="list-style-type:circle"><a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntddk/nf-ntddk-pssetloadimagenotifyroutine">PspLoadImageNotifyRoutine</a>&nbsp;- Registers a driver-supplied callback to be called whenever an image (DLL or EXE) is loaded (or mapped) into memory.</li></ul><ul id="f2600ceb-a3dc-43f9-84be-64c4a6350b62" class="bulleted-list"><li style="list-style-type:circle"><a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-cmregistercallbackex">CmRegisterCallbackEx</a>&nbsp;- Registers a driver-supplied callback to be called whenever a thread operates on the registry.</li></ul><p id="3f8dfb21-ffeb-4691-a898-5ff616a63b41" class="">To intercept, examine, and potentially block I/O events, Microsoft advises security vendors to use&nbsp;<a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/filter-manager-concepts">minifilter drivers</a>. Minifilter drivers are used in the Windows OS to intercept and modify I/O requests between applications and the file system. These drivers operate at a layer between the file system and the device driver that handles the physical I/O requests. EDRs can utilize minifilter drivers to register a callback for each I/O operation which will notify the driver of specific actions, such as process creation, registry modification, etc.</p><p id="34e410e9-e678-4f9e-87c5-4c2f10387a47" class="">Additionally, kernel callbacks can be registered by the EDR's Minifilter component in order to get unmodified data directly from the kernel, instead of having data coming from user-land resources, since these can be tampered with and modified.</p><p id="386a01f1-b5a2-435e-8e8e-5236771e3de1" class="">An example of how EDRs could use minifilter drivers and kernel callbacks is by calling&nbsp;<code>PspCreateProcessNotifyRoutine</code>&nbsp;to trigger the EDR to load its user-mode DLL into the created processes, in which it can perform system call hooking, and then using the minifilter driver functionality to monitor I/O file system requests by this newly created process.</p><h3 id="541f5db6-6274-4ff2-ba7f-4096b8fc38e3" class=""><strong>Network IoCs</strong></h3><p id="43e755aa-c680-46aa-acc2-f92aca1d9e24" class="">Processes that establish network connections possess a higher degree of suspicion due to the possibility of the connection being to an attacker-controlled C&amp;C server. Network connections will be monitored by EDRs and an alert will be triggered when a process that would not normally use a network connection begins doing so. For example, if process injection was done on&nbsp;<code>notepad.exe</code>&nbsp;and it began reaching out to the internet this is considered highly suspicious. Furthermore, aspects of the network connection are analyzed such as the target IP address, domain name, port number and network traffic.</p><h3 id="816c016a-3f6e-48f9-bcaf-fb98a536ac72" class=""><strong>Bypassing EDRs</strong></h3><p id="d3c2c2eb-802e-41a9-9da1-8e92aa56945d" class="">Bypassing EDRs can be difficult to pull off at first and requires a group of methods and techniques instead of relying on a single approach. The reason multiple methods are required is that EDRs use more than one technique to monitor the process. For example, unhooking doesn't block ETWs events but will solve the userland hooking problem. Sometimes multiple implementations will be required to solve the same problem (this will be demonstrated in the NTDLL unhooking modules).</p><p id="fdd2f351-752e-410c-8a7f-26a07fb1cdd6" class="">It is important to bear in mind that some EDR bypass techniques allow the loader to evade detection but not the C&amp;C payload in use. This can be the case due to several reasons:</p><ul id="ab172623-b3ca-4a71-ba1b-7aac4de37411" class="bulleted-list"><li style="list-style-type:circle">The C&amp;C network anomalies are well-known and signatured by the EDR.</li></ul><ul id="f619d4c9-476e-4604-b6ca-1b24eb19612d" class="bulleted-list"><li style="list-style-type:circle">The loader uses direct/indirect syscalls and successfully evaded detection, but the C&amp;C payload doesn't and still uses hooked functions.</li></ul><ul id="88b94876-fb81-46b4-8d41-bee3041e73a0" class="bulleted-list"><li style="list-style-type:circle">The C&amp;C payload executed a noisy command, either intentionally or unintentionally. Such commands will catch the attention of an EDR, and thus your implementation will be detected (e.g. spawn cmd.exe and execute the&nbsp;<code>whoami</code>&nbsp;command).</li></ul><ul id="229dea78-058a-4504-bf1a-33b1bcef995e" class="bulleted-list"><li style="list-style-type:circle">The C&amp;C uses recognizable named IPCs handles or open specific ones (recall that IPCs are Pipes - Events - Metaphors - Semaphores). For example, executing the "load powershell" command using Meterpreter results in the following.<figure id="192a57c4-d6b9-4c90-b474-8ebc4d66a2bd" class="image"><a href="./82. Introduction To EDRs_files/intro-edr-419941044-badc629b-fa34-4dfc-95e4-db9f22c94612.png"><img style="width:1691px" src="./82. Introduction To EDRs_files/intro-edr-419941044-badc629b-fa34-4dfc-95e4-db9f22c94612.png"></a></figure><p id="c60ee4f3-9bf5-445b-bd9d-7fda3e50800b" class="">For such reasons, and more, there would be a lot of cases where your implementation would succeed in returning a connection to your C2 server, but would get detected when running some specific commands. So choosing your C2 is an important decision for runtime evasion. It is always advised to use a highly flexible and malleable C2 framework rather than a limited one.</p><p id="70c42ffb-1506-4ee6-a50f-d90829bd4102" class="">In the following modules, multiple strategies will be presented to address EDR detection mechanisms. One may select the method that best fits their needs and combine it with other previously shown techniques to create successful implementations that can bypass EDR solutions.</p></li></ul></li></ul></div></article></body></html>

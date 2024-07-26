@@ -8,6 +8,7 @@ const sendMessage = document.querySelector('#send-message');
 const form        = document.querySelector('.newsletter');
 hamburgerBtn.addEventListener('click', activeClass);
 
+
 function activeClass(){
 	hamburgerBtn.classList.toggle('active');
 	navList.classList.toggle('active');
@@ -22,52 +23,19 @@ function listItemClicked(){
 	navList.classList.remove('active');
 }
 
-// Code For Navbar
-var homeSection = document.querySelector('#home');
-window.addEventListener('scroll', pageScrollFunction);
-window.addEventListener('load', pageScrollFunction);
 
-function pageScrollFunction(){
-	if(window.scrollY > 150){
-		homeSection.classList.add('active');
-	}
-	else{
-		homeSection.classList.remove('active');
-	}
-}
-
-// Home Section Ends
-
-// Send emails
-(function(){
-	emailjs.init({
-	  publicKey: "4WEZfQJBI5HK7rFsM",
-	  blockHeadless: true,
-	  blockList: {
-		// Block the suspended emails
-		list: ['foo@emailjs.com', 'bar@emailjs.com'],
-		// The variable contains the email address
-		watchVariable: 'userEmail',
-	  },
-	  limitRate: {
-		// Set the limit rate for the application
-		id: 'app',
-		// Allow 1 request per 10s
-		throttle: 10000,
-	  },
-	});
-	var templateParams = {
-		name: 'James',
-		notes: 'Check this out!',
-	  };
-    emailjs.send("service_lqsf4bu", "template_6wpj2sd", templateParams).then(
-		(response) => {
-			console.log('SUCCESS!', response.status, response.text);
-		  },
-		  (error) => {
-			console.log('FAILED...', error);
-		  },
-	);
-	
- })();
- 
+/*
+ Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "maychar1482@gmail.com",
+    Password : "58B0B4646D84AE00F55BA084DFF601307355",
+    To : 'maychar1482@gmail.com',
+    From : "maychar1482@gmail.com",
+    Subject : "Test mailling",
+    Body : "Message sending!"
+}).then(
+  message => alert(message)
+).catch(error=>{
+	alert(error)
+});
+*/

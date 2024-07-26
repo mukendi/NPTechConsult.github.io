@@ -6,11 +6,11 @@
 
 	<!--  *****   Link To Font Awsome Icons   *****  -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-
+	<link rel="shortcut icon" href="images/home/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 	<title>NPTechConsultant</title>
 </head>
 <body>
@@ -31,6 +31,7 @@
 			<li><a href="#about">Mission</a></li>
 			<li><a href="#services">Services</a></li>
 			<li><a href="#contact">Contact</a></li>
+			<li><a href="./pages/formations/list-formations.html">Formations</a></li>
 			<li><a href="./pages/about.html">A propos</a></li>
 			
 		</ul>
@@ -157,7 +158,7 @@
 			</div>
 			<div class="trainer-desc">
 				<h2>Jean Dupont</h2>
-				<span>CTO de TechCorp</span>
+				<span>CTO de VoxCorp</span>
 				<p>Grace à NPTechConsultant, nous avons pu identifier et combler des failles critiques dans notre infrastructures. Leur équipe de sécurité offensive a simulé des attaques réelles et nous a aidés à renforcer notre résilience. Aujourd'hui, nous nous sentons en sécurité et prets à affronter toute menace.</p>
 			</div>
 		</div>
@@ -167,7 +168,7 @@
 			</div>
 			<div class="trainer-desc">
 				<h2>Marie Legrand</h2>
-				<span>DSI de Innovatech</span>
+				<span>DSI de InnovaLi</span>
 				<p>Nous avons choisi NPTechConsultant pour la gouvernance et le management de nos systèmes d'information, et nous ne le regrettons pas. Leur approche stratégique a transformé notre gestion IT, amélioré notre conformité et optimisé nos performances. Une équipe professionnelle et compétente que je recommande vivement.</p>
 			</div>
 		</div>		
@@ -177,7 +178,7 @@
 			</div>
 			<div class="trainer-desc">
 				<h2>David Lefèvre</h2>
-				<span>Directeur Technique de FinTech Group</span>
+				<span>Directeur Technique de STech Group</span>
 				<p>L'intégration des solutions de sécurité de NPTechConsultant a été un succès. Leur expertise et leur rigueur ont permis de sécuriser notre réseau et nos applications de manière optimale. Les résultats sont tangibles et nous nous sentons beaucoup plus sécurisés. </p>
 			</div>
 		</div>
@@ -187,7 +188,7 @@
 			</div>
 			<div class="trainer-desc">
 				<h2>Sophie Durant</h2>
-				<span>CEO de Retail Solutions</span>
+				<span>CEO de Obir Solutions</span>
 				<p>Avec le service de surveillance continue de NPTechConsultant, nous avons la tranquilité d'esprit de savoir que nos système sont protégés 24/7. Leur capacité à détecter et à répondre rapidement aux incidents nous permet de nous concentrer sur notre coeur de métier sans souci. </p>
 			</div>
 		</div>
@@ -202,7 +203,7 @@
 	<header class="section-header">
 		<h3>Notre Blog</h3>
 		<h1>Les derniers de notre blog.</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	
 	</header>
 	<!--   === Blog Header Ends ===   -->
 
@@ -210,50 +211,58 @@
 	<div class="blog-contents">
 		
 		<div class="article-card">
-			<img src="images/posts/IMG-POST1.jpg">
-			<div class="category">
-				<div class="subject"><h3>malwares</h3></div>
-				<span>16/07/2024</span>
-			</div>
-			<h2 class="article-title">Injection de Notification DLL</h2>
-			<p class="article-desc">Nouvelle technique d'injection de processus "sans thread" qui fonctionne en utilisant le concept...</p>
-			<div class="article-views">
-				<span>Mor Davidovitch</span>
-				<span>Développement des malwares</span>
-			</div>
+			<a href="./pages/blog/list-item/28. Process Injection - DLL Injection.html">
+				<img src="images/posts/IMG-POST1.jpg">
+				<div class="category">
+					<div class="subject"><h3>malwares</h3></div>
+					<span>16/07/2024</span>
+				</div>
+				<h2 class="article-title">Process Injection - DLL Injection</h2>
+				<p class="article-desc">This module will demonstrate a similar method to the one that was previously shown with the local DLL injection except it will now be performed on a remote process.</p>
+				<div class="article-views">
+					<span>MalDevAcademy</span>
+					<span>Développement des malwares</span>
+				</div>
+			</a>
+
 		</div>
 
-		<div class="article-card">
-			<img src="images/posts/IMG-POST2.jpg">
-			<div class="category">
-				<div class="subject"><h3>phishing</h3></div>
-				<span>26/02/2024</span>
+		<a href="./pages/blog/list-item/2. Introduction To Malware Development.html">
+			<div class="article-card">
+				<img src="images/posts/IMG-POST2.jpg">
+				<div class="category">
+					<div class="subject"><h3>phishing</h3></div>
+					<span>26/02/2024</span>
+				</div>
+				<h2 class="article-title">Introduction To Malware Development </h2>
+				<p class="article-desc">Malware is a type of software specifically designed to perform malicious actions such as gaining unauthorized access to a machine or stealing sensitive data from a machine.</p>
+				<div class="article-views">
+					<span>MalDevAcademy</span>
+					<span>Développement des malwares</span>
+				</div>
 			</div>
-			<h2 class="article-title">Mail in the Middle </h2>
-			<p class="article-desc">Un outil pour automatiser les campagnes de spearphishing avec une efficacité redoutable.</p>
-			<div class="article-views">
-				<span>Jason Yang</span>
-				<span>Red Teaming Operation</span>
+		</a>
+		<a href="./pages/blog/list-item/82. Introduction To EDRs.html">
+			<div class="article-card">
+				<img src="images/posts/IMG-POST1.jpg">
+				<div class="category">
+					<div class="subject"><h3>malwares</h3></div>
+					<span>16/07/2024</span>
+				</div>
+				<h2 class="article-title">Introduction to EDRs</h2>
+				<p class="article-desc">Endpoint Detection and Response (EDR) is a security solution that detects and responds to threats like ransomware and malware. It works by continuously monitoring endpoints for suspicious activity .</p>
+				<div class="article-views">
+					<span>MalDevAcademy</span>
+					<span>Développement des malwares</span>
+				</div>
 			</div>
-		</div>
-		<div class="article-card">
-			<img src="images/posts/IMG-POST1.jpg">
-			<div class="category">
-				<div class="subject"><h3>malwares</h3></div>
-				<span>16/07/2024</span>
-			</div>
-			<h2 class="article-title">Injection de Notification DLL</h2>
-			<p class="article-desc">Nouvelle technique d'injection de processus "sans thread" qui fonctionne en utilisant le concept...</p>
-			<div class="article-views">
-				<span>Mor Davidovitch</span>
-				<span>Développement des malwares</span>
-			</div>
-		</div>
+		</a>
+		
 
 	</div>
 	<!--   === Blog Contents Ends ===   -->
 	<div class="view-more-btn-container">
-		<button class="btn articles-view-btn">Voir plus</button>
+		<!--<button class="btn articles-view-btn">Voir plus</button> !-->
 	</div>
 </section>
 <!--   *** Blog Section Ends ***   -->
@@ -310,7 +319,6 @@
 				<h3>Contact</h3>
 			</div>
 			<div class="footer-col-desc">
-				<span>321 Avenue, Paris, FRANCE</span>
 				<span> +33 7 84 99 56 | +33 7 45 63 06 62 | +243 814 930 933</span>
 				<span>contact@nptechconsultant.com</span>
 				<div class="footer-social-media">
@@ -331,7 +339,8 @@
 				<a href="#">Mission</a>
 				<a href="#">Services</a>
 				<a href="#">Contact</a>
-				<a href="#">A propos</a>
+				<a href="./pages/formations/list-formations.html">Formations</a>
+				<a href="./pages/about.html">A propos</a>
 				
 				
 			</div>
