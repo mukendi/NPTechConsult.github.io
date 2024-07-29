@@ -10,14 +10,13 @@ html{
 	
 	/* === Varialbles For Storing Colors === */
 	--background-clr: #edf0f6;
-	--dark-bg-clr: #010000;
+	--dark-bg-clr: #000000;
 	--primary-clr: #09778d;
 	--light-heading-clr: #f9f9f9;
 	--light-secondary-heading-clr: #ccc;
 	--light-text-clr: #828282;
 	--dark-heading-clr: #242d38;
 	--dark-text-clr: #7b7b7b;
-    --bg: #efefef;
 }
 html::-webkit-scrollbar{
 	width: .8rem;
@@ -28,9 +27,6 @@ html::-webkit-scrollbar-track{
 html::-webkit-scrollbar-thumb{
 	background: #b3b7bc;
 	border-radius: 5rem;
-}
-body{
-    background: var(--bg);
 }
 /*   === Reusable Code Starts ===   */
 button.btn{
@@ -49,18 +45,18 @@ button.btn:hover{
 	color: var(--primary-clr);
 	border: 1px solid var(--primary-clr);
 }
-a.btn{
-    padding: 10px 25px;
+.btn-send a{
+	padding: 10px 25px;
 	background-color: var(--primary-clr);
 	color: var(--light-heading-clr);
 	font-size: 15px;
 	font-weight: 500;
 	border: 1px solid transparent;
-	border-radius: 5px;
+	border-radius: 25px;
 	cursor: pointer;
 	transition: all 0.3s;
 }
-a.btn:hover{
+.btn-send a:hover{
 	background-color: transparent;
 	color: var(--primary-clr);
 	border: 1px solid var(--primary-clr);
@@ -99,15 +95,9 @@ a{
 	margin: 0px auto;
 	background-color: var(--background-clr);
 }
-section.home{
-	position: relative;
-	width: 100%;
-	min-height: 100vh;
-	padding: 0px 8%;
-	background: url('../images/home/IMG-20240710-WA0014.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
+
+a{
+	text-decoration: none;
 }
 .home .home-overlay{
 	position: absolute;
@@ -172,100 +162,8 @@ section.home{
 	margin: 6px auto;
 	transition: all 0.3s;
 }
-.home .banner{
-	position: relative;
-	width: 100%;
-	min-height: calc(100vh - 80px);
-	top: 80px;
-	color: var(--light-heading-clr);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 2;
-}
-.home .banner .banner-contents{
-	position: relative;
-	max-width: 700px;
-	top: -55px;
-	text-align: center;
-}
-.banner .banner-contents h2{
-	font-size: 22px;
-	text-transform: uppercase;
-	font-weight: 400;
-	color: var(--light-secondary-heading-clr);
-}
-.banner .banner-contents h1{
-	color: var(--light-heading-clr);
-	margin: 20px 0px;
-	font-size: 52px;
-	line-height: 1.3;
-	text-transform: uppercase;
-	font-weight: 400;
-}
-.banner .banner-contents p{
-	color: var(--light-text-clr);
-}
-.banner .banner-contents .read-more-btn{
-	margin-top: 30px;
-	font-size: 17px;
-}
-/*   === Home Section Styling Ends ===   */
-
-/*   === Expertise Section Starts ===  */
-
-.expertise .heading{
-    text-align: center;
-    color: #272727;
-    padding: 2rem;
-    
-}
-
-.expertise .box-container{
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
-   gap: 1.3rem;
-   margin: 2rem;
 
 
-}
-.expertise .box-container .box{
-  padding: 5rem;
-  text-align: center;
-  border: var(--border);
-
-}
-.expertise .box-container .box img{
-  height: 9rem;
-  width: 13rem;
-}
-.expertise .box-container .box h3{
- color: #414242;
- font-size: 1.2rem;
- padding: 1rem 0;
-
-}
-.expertise .box-1{
-  position: relative;
-  bottom: 1.7rem;
-  height: 60px;
-  padding: 1.5rem;
-}
-.box-1 p{
-line-height: 1rem;
-color: #7c7c7c;
-padding: 2px;
-}
-.box:hover{
-cursor: pointer;
-
-}
-.expertise .box-container .box{
- background: #ffff;
-
-}
-
-/*   === Expertise Section Ends   === */
 /*   === Footer Section Styling Starts ===   */
 section.page-footer{
 	width: 100%;
@@ -384,14 +282,13 @@ section.page-footer{
 		left: calc(calc(100% - 1400px) / 2);
 	}
 }
-
 @media(max-width: 968px){
 	/* Home Section */
 	.main-navbar .nav-list li{
 		margin: 0px 10px;
 	}
-}
 
+}
 @media(max-width: 868px){
 	/* Home Section */
 	.home .main-navbar .hamburger-btn{
@@ -438,93 +335,5 @@ section.page-footer{
 	.main-navbar .hamburger-btn.active span:nth-child(2){
 		transform: translateX(-30px);
 		opacity: 0;
-	}
-	/* footer Section */
-	.page-footer .footer-contents{
-		grid-template-columns: 1fr;
-	}
-}
-
-@media(max-width: 768px){
-   	/* Home Section */
-	.banner .banner-contents h2{
-		font-size: 20px;
-	}
-	.banner .banner-contents h1{
-		font-size: 40px;
-	}
-	/* Sections Heading */
-	section .section-header h1{
-		font-size: 32px;
-	}
-		/* Home Section */
-	.banner .banner-contents h2{
-		font-size: 20px;
-	}
-	.banner .banner-contents h1{
-		font-size: 40px;
-	}
-	/* Sections Heading */
-	section .section-header h1{
-		font-size: 32px;
-	}
-	.expertise {
-		height: 140rem;
-	}
-	.expertise .heading{
-        position: relative;
-		top: 1.4rem;
-	}
-    
-	.expertise .box-1 {
-		position: relative;
-		top: 1.4rem;
-	}
-
-    .expertise .box-1 p{
-        font-size: 0.80rem;
-   }
-   .expertise .box-container{
-	   position: relative;
-	   right: 0.0rem;
-	   left: 0.4rem;
-   }
-   #box-container-id{
-	position: relative;
-	top: 5.5rem;
-   }
-   .expertise .box-container .box{
-    position: relative;
-    top: 24px;
-    width: 68%;
-   }
-   .expertise .box-container .box img{
-    object-fit: cover;
-   }
-}
-
-@media (max-width :  390px) {
-	.expertise{
-		position: relative;
-		bottom: 2.0rem;
-	}
-	.expertise .box-container{
-		position: relative;
-		top: 1.1rem;
-		margin: 0.7rem;
-	}
-	.expertise .box-container .box{
-		position: relative;
-		top: 1.9rem;
-		height: 23rem;
-	}
-	
-}
-@media (max-width :  360px){
-    .expertise .box-1{
-		height: 7rem;
-	}
-	.expertise .box-1 h1{
-		font-size: 1.5rem;
 	}
 }

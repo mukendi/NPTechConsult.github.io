@@ -217,7 +217,6 @@ section.home{
     padding: 2rem;
     
 }
-
 .expertise .box-container{
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
@@ -233,8 +232,8 @@ section.home{
 
 }
 .expertise .box-container .box img{
-  height: 9rem;
-  width: 13rem;
+  height: 7rem;
+  width: 7rem;
 }
 .expertise .box-container .box h3{
  color: #414242;
@@ -246,20 +245,41 @@ section.home{
   height: 60px;
   padding: 1.5rem;
 }
+.expertise .box-1 h2{
+  color: #7c7c7c;
+  font-size: 1.2rem;
+}
 .box-1 p{
-line-height: 1rem;
-color: #7c7c7c;
-padding: 2px;
+  line-height: 1rem;
+  color: #7c7c7c;
+  padding: 2px;
 }
 .box:hover{
-cursor: pointer;
+  cursor: pointer;
 
 }
 .expertise .box-container .box{
  background: #ffff;
-
+}
+.expertise .view-more-btn-container {
+	display: flex;
+	justify-content: center;
+	padding: 1.2rem;
+}
+.expertise .box-container .box p{
+	color: #414242;
+}
+.expertise .box-container .box span{
+	position: relative;
+	top: 1.0rem;
+	color: rgb(23, 57, 66);
+	font-weight: bold;
 }
 
+.view-more-btn-container{
+	position: relative;
+	top: 0.5rem;
+}
 /*   === Expertise Section Ends   === */
 /*   === Footer Section Styling Starts ===   */
 section.page-footer{
@@ -380,6 +400,12 @@ section.page-footer{
 	}
 }
 
+@media(max-width: 1050px){
+	.expertise{
+		position: relative;
+		bottom: 1.7rem;
+	}
+}
 @media(max-width: 968px){
 	/* Home Section */
 	.main-navbar .nav-list li{
@@ -434,7 +460,10 @@ section.page-footer{
 		transform: translateX(-30px);
 		opacity: 0;
 	}
-
+	.expertise{
+		position: relative;
+		bottom: 1.7rem;
+	}
 	/* footer Section */
 	.page-footer .footer-contents{
 		grid-template-columns: 1fr;
@@ -471,21 +500,60 @@ section.page-footer{
    .expertise .box-container .box img{
     object-fit: cover;
    }
+  
+}
+@media (max-width : 500px){
+   .expertise{
+	position: relative;
+	bottom: 1.7rem;
+   }
+   .expertise .box-container{
+	padding: 0.4rem;
+   }
 }
 @media (max-width :  390px) {
 	.expertise{
 		position: relative;
 		bottom: 2.3rem;
+		left: 0.0rem;
 	}
 	.expertise .box-container{
 		position: relative;
 		top: 1.1rem;
-		margin: 0.7rem;
+		
 	}
 	.expertise .box-container .box{
 		position: relative;
-		top: 1.9rem;
+		top: 1.5rem;
 		height: 23rem;
 	}
+	.expertise .box-container .box img{
+		position: relative;
+		bottom: 3.7rem;
+	}
+	.expertise .box-container .box h3{
+		position: relative;
+		bottom: 2.5rem;
+	}
+	.expertise .box-container .box .btn{
+		position: relative;
+		bottom: 3rem;
+	}
+	.expertise .box-container .box h3{
+		font-size: 1.0rem;
+	}
+	.expertise .box-container .box p{
+		font-size: 0.78rem;
+		color: #414242;
+	}
+	.expertise .box-container .box span{
+		color: rgb(23, 57, 66);
+	}
 	
+}
+@media (max-width :  360px){
+   .expertise .box-container .box{
+	position: relative;
+	right: 1.5rem;
+   }
 }

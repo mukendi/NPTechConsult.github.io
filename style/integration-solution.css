@@ -601,5 +601,20 @@ section.page-footer{
 		top: 1.9rem;
 		height: 23rem;
 	}
+	.expertise .box-1{
+		height: 5rem;
+	}
 	
+}
+@media (max-width :  360px){
+    .expertise .box-1{
+		height: 7rem;
+	}
+	.expertise .box-1 h1{
+		font-size: 1.5rem;
+	}
+	.expertise .box-container .box{
+		position: relative;
+		right: 1rem;
+	}
 }

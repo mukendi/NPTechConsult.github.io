@@ -574,7 +574,7 @@ section.blog{
 .contact .row form{
     
     flex: 1 1 55rem;
-    padding: 4rem 3rem;
+    padding: 3rem 3rem;
     text-align: center;
 }
 
@@ -621,6 +621,18 @@ section.blog{
    border-radius: 30px;
 }
 
+.contact .row form p {
+	padding: 1.1rem;
+	color:  red;
+}
+.contact .row form .message{
+	position: relative;
+	bottom: 1.rem;
+}
+.contact .row form #successMessage {
+	padding: 1.1rem;
+	color:  rgb(2, 126, 23);
+}
 
 
 /*   === Contact Formulaire Ends     === */
