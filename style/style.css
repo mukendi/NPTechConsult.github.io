@@ -378,6 +378,7 @@ section.offer{
 	color: var(--light-heading-clr);
 	text-align: center;
 	letter-spacing: 2px;
+	font-family: 'Roboto';
 }
 .offer .offer-contents span{
 	margin: 10px 0px;
@@ -560,6 +561,7 @@ section.blog{
 	grid-template-columns: repeat(1, 1fr);
 	grid-gap: 20px;
 	margin: 0px auto;
+	padding: 2rem;
 	background: rgb(255, 255, 255);
 
 }
@@ -606,7 +608,7 @@ section.blog{
     color: #212121;
     text-transform: none;
     background: none;
-	border: 1px solid #4e4e4e;
+	border: 1px solid #dfdfdf;
 	border-radius: 30px;
 
 }
@@ -617,7 +619,7 @@ section.blog{
    color: #212121;
    text-transform: none;
    background: none;
-   border: 1px solid #4e4e4e;
+   border: 1px solid #dfdfdf;
    border-radius: 30px;
 }
 
